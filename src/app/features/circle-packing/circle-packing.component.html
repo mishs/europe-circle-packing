@@ -1,0 +1,26 @@
+<mat-sidenav-container class="layout">
+  <mat-sidenav
+    mode="over"
+    [opened]="!!selectedCountry"
+    (closedStart)="onDrawerClosed()"
+  >
+    <app-country-drawer [country]="selectedCountry"></app-country-drawer>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="toolbar">
+      <mat-button-toggle-group
+        [value]="valueProperty"
+        (change)="onToggle($event.value)"
+        aria-label="Value property"
+      >
+        <mat-button-toggle value="population">Population</mat-button-toggle>
+        <mat-button-toggle value="land_area_km2">Land Area</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="viz">
+      <svg #svgContainer></svg>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
