@@ -1,0 +1,18 @@
+    <ng-container *ngIf="country">
+      <header class="drawer-header">
+        <img class="flag" [src]="country.flag" [alt]="country.country + ' flag'"
+             (error)="onImgError($event)" />
+        <div>
+          <h2>{{ country.country }}</h2>
+          <div class="sub">{{ country.region }}</div>
+        </div>
+      </header>
+
+      <ul class="stats">
+        <li><b>Population:</b> {{ country.population | number }}</li>
+        <li><b>Land area:</b> {{ country.land_area_km2 | number }} km²</li>
+        <li>
+          <a [href]="country.wikipedia" target="_blank" rel="noopener">Wikipedia</a>
+        </li>
+      </ul>
+    </ng-container>

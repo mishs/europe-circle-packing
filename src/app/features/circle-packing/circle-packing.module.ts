@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AsyncPipe } from '@angular/common';
 import { CirclePackingComponent } from './circle-packing.component';
-import { CountryDrawerComponent } from './country-drawer.component';
+import { CountryDrawerComponent } from '../country-drawer-component/country-drawer.component';
 
 @NgModule({
   imports: [

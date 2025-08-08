@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -6,8 +6,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
-import { CountryDrawerComponent, Country } from './country-drawer.component';
-import { Store } from '@ngrx/store';
+import { CountryDrawerComponent } from '../country-drawer-component/country-drawer.component';
+import { Country } from '../../models/country.model';
 
 type ValueProp = 'population' | 'land_area_km2';
 
@@ -17,13 +17,12 @@ type ValueProp = 'population' | 'land_area_km2';
   imports: [CommonModule, MatButtonToggleModule, MatSidenavModule, MatIconModule, CountryDrawerComponent],
   // providers: [provideHttpClient()],
   templateUrl: './circle-packing.component.html',
-  styleUrls: ['./circle-packing.component.scss']
+  styleUrls: ['./circle-packing.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CirclePackingComponent implements AfterViewInit {
   @ViewChild('svgContainer', { static: true }) svgRef!: ElementRef<SVGSVGElement>;
   http = inject(HttpClient);
-  store = inject(Store);
-
   // simple local state for standalone sample
   valueProperty: ValueProp = 'population';
   selectedCountry: Country | null = null;
