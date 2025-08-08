@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { CirclePackingComponent } from './features/circle-packing/circle-packing.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  standalone: true,
+  imports: [CirclePackingComponent],
+  template: `<app-circle-packing></app-circle-packing>`
 })
-export class App {
-  protected readonly title = signal('europe-circle-packing');
-}
+export class App {}
